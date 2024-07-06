@@ -1,0 +1,28 @@
+All I did was clone this repository.  The apps/testing_interface.html can simply be opened as a file by your browser.
+
+I made a bunch of notes against this interface, attached here as a png.  These are all UI improvement suggestions for a desktop app.
+
+The idea of making a mobile-first "marketplace" app needs a complete redesign.  I'm excited about this one!
+To reiterate, the idea is:
+Make an ARC multiplayer game where you can play two ways:
+EXPLORER: Look at example sets of input-output, and submit your 240 character description of what's going on and how to transform the inputs into the outputs, for others to follow.
+BUILDER: Look at test inputs and peruse the user submitted solution descriptions.  Vote on or rate the solution descriptions.  Use one or more solutions to solve the puzzle using the provided drawing tools.
+Earn the usual badges, rewards, prestige, etc. by participating and excelling.  (Too many ways to reward engagement, quality, brevity, etc.!)
+I like the Wordle "Daily" model, but that might be too slow for our purposes?
+We'd be upfront about collecting data for AI, and lean in on the "Are you smarter than AI?" messaging.
+Let Explorers pick randomly from puzzles they haven't submitted solutions for, or review, edit, or submit alternates for submitted solutions?
+Let Builders pick randomly from puzzles they haven't solved yet, scroll through solutions Reddit style, with the most up-voted on top, and conversation threads below.  Builds could be rated on the fewest steps, and maybe on raw time?
+
+I believe this will yield high quality data, enabling an AI to convert new and novel puzzle sets into concise descriptions of what is going on.
+
+I am still squishy on the best AI or ML approach to either one-shotting the pixels, or iteratively using tools, to take the starting condition for the test output and generate the final output.  The current gamification does not result in human descriptions for the steps followed to select from the available tools and decide how to convert the solution described into a series of tool usages, in plain English.  We would have some data, though: the example input/output + the test input + the description + the sequence of tool usage.  Maybe this is all we'd need?
+
+--
+To render png images from the data in the repo, use the Python script attached.  I think these images will be good for automating some initial explorations.
+The script operates on one JSON file at a time by passing in the filename.
+To run it on a whole directory, you could do something like this in Terminal (from the root of the repo).
+
+for f in data/evaluation/*.json; do ./render.py $f; done
+
+
+(You may need to run pip or pip3 install Pillow first.)
